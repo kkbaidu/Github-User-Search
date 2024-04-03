@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+console.log(process.env.GITHUB_TOKEN)
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
