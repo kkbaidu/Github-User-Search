@@ -1,14 +1,16 @@
 import { gql } from "@apollo/client";
 import { client } from "./client";
 import { User } from "../definitions";
+import { useGenerationLoginStore } from "../context";
 
 export const GetUser = gql`
-    query User($login: String!, $privacy: RepositoryPrivacy, $first: Int, $followersFirst2: Int, $followingFirst2: Int, $languagesFirst2: Int) {
+    query User($login: String!, $organizationsFirst2: Int, $first: Int, $followersFirst2: Int, $followingFirst2: Int, $languagesFirst2: Int) {
         user(login: $login) {
             name
             avatarUrl
             bio
             email
+            login
             organizations(first: $organizationsFirst2) {
             nodes {
                 avatarUrl
@@ -34,13 +36,11 @@ export const GetUser = gql`
             edges {
                 node {
                 avatarUrl
+                name
                 bio
-                followers {
-                    totalCount
-                }
-                repositories(privacy: $privacy) {
-                    totalCount
-                }
+                login
+                company
+                location
                 }
             }
             }
@@ -49,10 +49,11 @@ export const GetUser = gql`
             edges {
                 node {
                 avatarUrl
+                name
                 bio
-                repositories(privacy: $privacy) {
-                    totalCount
-                }
+                login
+                company
+                location
                 }
             }
             }
@@ -61,11 +62,12 @@ export const GetUser = gql`
     `
 
 export async function getStaticProps():Promise<User> {
+    let { login } = useGenerationLoginStore();
+
     const { data } = await client.query({
       query: GetUser,
       variables: {
-        login: "kkbaidu",
-        privacy: "PUBLIC",
+        login: login,
         first: 15,
         followersFirst2: 15, 
         followingFirst2: 15,

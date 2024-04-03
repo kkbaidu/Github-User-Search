@@ -1,13 +1,20 @@
 "use client"
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
+import { useGenerationLoginStore } from "@/lib/context";
 
 export default function Home() {
   const router = useRouter();
+  const { login, setLogin } = useGenerationLoginStore();
 
   const navigateToRepositories = () => {
-    router.push('/repositories');
+    if(!login) {
+      router.push('/repositories');
+    } else {
+      console.log("Please type in a username")
+    }
   };
 
   return (
@@ -56,6 +63,7 @@ export default function Home() {
           type="text" 
           placeholder="Username..." 
           name="username"
+          onChange={(e) => e}
           className="w-full md:w-[90%] lg:w-[90%] h-11 rounded px-2 mb-3 outline-none" />
           <button 
           onClick={navigateToRepositories} 

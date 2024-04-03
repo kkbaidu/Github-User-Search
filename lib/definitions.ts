@@ -4,47 +4,53 @@ export type User = {
         name: string,
         avatarUrl: string,
         bio: string,
-        email: string,
+        email?: string,
+        login?: string,
+        organizations?: {
+            nodes: [{
+              avatarUrl: string,
+              name: string,
+            }]
+          }
         repositories: {
-        totalCount: number
-        nodes: {
+        totalCount: number,
+        nodes: [{
             description: string,
             name: string,
             languages: {
-            nodes: {
-                name: string,
-                color: string,
-            }
+            nodes: [{
+                name?: string,
+                color?: string,
+            }]
             }
             updatedAt: string
-        }
+        }]
         }
         followers: {
         totalCount: string
-        edges: {
+        edges: [{
             node: {
             avatarUrl: string,
-            bio: string,
-            followers: {
-                totalCount: number
+            name: string,
+            bio?: string,
+            login: string,
+            company?: string,
+            location?: string, 
             }
-            repositories: {
-                totalCount: number
-            }
-            }
-        }
+        }]
         }
         following: {
         totalCount: string
-        edges: {
+        edges: [{
             node: {
             avatarUrl: string
-            bio: string
-            repositories: {
-                totalCount: number
+            name: string
+            bio?: string
+            login: string,
+            company?: string,
+            location?: string,
             }
-            }
-        }
+        }]
         }
     }
     }
