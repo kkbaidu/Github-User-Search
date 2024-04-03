@@ -3,19 +3,21 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
-import { useGenerationLoginStore } from "@/lib/context";
+import { useGenerationLoginStore } from "@/lib/zustand-context";
 
 export default function Home() {
   const router = useRouter();
-  const { login, setLogin } = useGenerationLoginStore();
+  const { setLogin } = useGenerationLoginStore();
+  const [ search, setSearch ] = useState<string>();
 
   const navigateToRepositories = () => {
-    if(!login) {
-      router.push('/repositories');
+    if(!search) {
+      console.log("Please enter a username")
     } else {
-      console.log("Please type in a username")
+      setLogin(search);
+      router.push('/repositories');
     }
-  };
+  }
 
   return (
     <main className="w-full">
@@ -63,7 +65,7 @@ export default function Home() {
           type="text" 
           placeholder="Username..." 
           name="username"
-          onChange={(e) => e}
+          onChange={(e) => setSearch(e.target.value)}
           className="w-full md:w-[90%] lg:w-[90%] h-11 rounded px-2 mb-3 outline-none" />
           <button 
           onClick={navigateToRepositories} 

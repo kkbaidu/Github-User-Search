@@ -1,7 +1,6 @@
 import { gql } from "@apollo/client";
 import { client } from "./client";
 import { User } from "../definitions";
-import { useGenerationLoginStore } from "../context";
 
 export const GetUser = gql`
     query User($login: String!, $organizationsFirst2: Int, $first: Int, $followersFirst2: Int, $followingFirst2: Int, $languagesFirst2: Int) {
@@ -61,9 +60,7 @@ export const GetUser = gql`
         }
     `
 
-export async function getStaticProps():Promise<User> {
-    let { login } = useGenerationLoginStore();
-
+export async function getStaticProps(login: string):Promise<User> {
     const { data } = await client.query({
       query: GetUser,
       variables: {

@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import Image from "next/image";
-import { useGenerationStore } from "@/lib/context";
+import { useGenerationStore } from "@/lib/zustand-context";
 
 
 export default function SideBar() {
@@ -8,7 +8,7 @@ export default function SideBar() {
     return(
       <div>
         {typeof user?.user != "undefined"?
-        <div className="flex flex-col items-center h-[90vh] w-full pb-10 px-2">  
+        <div className="flex flex-col items-center md:h-[90vh] lg:h-[90vh] w-full pb-10 px-2">  
           <Image
             src={user?.user.avatarUrl}
             alt="Background Image"
@@ -16,7 +16,7 @@ export default function SideBar() {
             height={250}
             className="rounded-full mb-4"
           />
-          <div className="text-[30px] text-center font-bold">
+          <div className="text-[30px] text-center mb-2 md:mb-0 lg:mb-0 font-bold">
             {user?.user.name}
           </div>
           <div className="text-center text-gray-300 text-[20px] w-full mb-2">
@@ -58,7 +58,7 @@ export default function SideBar() {
           </div>
         </div>
       : 
-      <div className="flex flex-col justify-center items-center border-r border-gray-800 h-[90vh] w-full"> 
+      <div className="flex flex-col justify-center items-center md:border-r lg:border-r border-gray-800 h-[90vh] w-full"> 
       <div className="flex flex-row">Sidebar Loading<span className="animate-pulse">...</span></div>
       </div>
       }
