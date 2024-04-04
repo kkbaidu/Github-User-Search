@@ -19,8 +19,6 @@ export default function Home() {
     }
   }
 
-  console.log(process.env.GITHUB_TOKEN);
-
   return (
     <main className="w-full">
       <div 

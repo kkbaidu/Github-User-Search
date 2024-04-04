@@ -23,8 +23,8 @@ export default function Follow({avatar, name, login, bio, company, location}: Pr
             />
             <div className="flex flex-col justify-start w-full h-full">
                 <span className="font-bold text-[25px]"> 
-                <span>{name}</span>
-                <span>{login}</span> 
+                <span className="mr-2">{name}</span>
+                <span className="text-gray-400">{login}</span> 
                 </span>
                 <span className="text-gray-500">{bio}</span>
                 <span className="text-gray-500">

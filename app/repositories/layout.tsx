@@ -26,7 +26,7 @@ export default function DashboardLayout({
             <div className="flex flex-row justify-center w-full items-center top-0 fixed h-[10vh]">
               <div className="hidden md:flex lg:flex flex-row justify-between items-center w-full md:w-1/3 lg::w-1/3 px-2">
                 <div className={`${pathName === "/repositories"? "text-white font-bold text-lg border-b" : "text-gray-500"} hover:text-gray-400`}>
-                  <Link href={"/repositories"} > Repositories {"(15)"} </Link>
+                  <Link href={"/repositories"} > Repositories </Link>
                 </div>
                 <div className={`${pathName === "/repositories/followers"? "text-white font-bold text-lg border-b" : "text-gray-500"} hover:text-gray-400`}>
                   <Link href={"/repositories/followers"} > Followers </Link>
