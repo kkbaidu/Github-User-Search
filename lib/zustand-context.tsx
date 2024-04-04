@@ -19,13 +19,15 @@ interface GenerationLoginState {
 }
 
 export const useGenerationLoginStore = create<GenerationLoginState>((set) => {
-    const initialLogin = sessionStorage.getItem("login") || "";
+    const initialLogin = typeof window !== 'undefined' ? sessionStorage.getItem("login") || "" : "";
 
     return {
         login: initialLogin,
         setLogin: (login: string) => {
-            sessionStorage.setItem("login", login);
+            if (typeof window !== 'undefined') {
+              sessionStorage.setItem("login", login);
+            }
             set({ login });
-        }
+          }
     };
 });

@@ -9,11 +9,13 @@ export default function Home() {
   const router = useRouter();
   const { setLogin } = useGenerationLoginStore();
   const [ search, setSearch ] = useState<string>();
+  const [isClicked, setIsClicked] = useState(false);
 
   const navigateToRepositories = () => {
     if(!search) {
       console.log("Please enter a username")
     } else {
+      setIsClicked(true);
       setLogin(search);
       router.push('/repositories');
     }
@@ -69,8 +71,10 @@ export default function Home() {
           className="w-full md:w-[90%] lg:w-[90%] h-11 rounded px-2 mb-3 outline-none" />
           <button 
           onClick={navigateToRepositories} 
-          className="text-white bg-[#703fc8] w-full md:w-[90%] lg:w-[90%] h-11"
-          > Search </button>
+          className="btn text-white bg-[#703fc8] w-full md:w-[90%] lg:w-[90%] h-11"
+          > 
+          <span className={`${isClicked === true? "loading loading-spinner": ""}`}></span>
+          Search </button>
         </div>
       </div>
       </div>
