@@ -42,7 +42,7 @@ export default function SideBar() {
             {
               typeof user?.user.organizations != "undefined"? user?.user.organizations.nodes.map((image) => {
                 return (
-                  <div>
+                  <div key={image.name}>
                     <Image
                       src={image.avatarUrl}
                       alt="Background Image"

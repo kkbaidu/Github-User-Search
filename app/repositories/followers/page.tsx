@@ -21,7 +21,6 @@ export default function Followers() {
       fetchData();
     }, []);
 
-
     return (
         <main className="w-full md:h-[90vh] lg:h-[90vh] flex flex-row dark:text-white">
           <div className="hidden md:block lg:block w-[18%] fixed">
@@ -30,7 +29,6 @@ export default function Followers() {
           <div className="drawer fixed top-2 left-2 md:hidden lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-              {/* Page content here */}
               <label htmlFor="my-drawer" className="drawer-button">
                 <Image
                   src="/menu-pic.svg"
