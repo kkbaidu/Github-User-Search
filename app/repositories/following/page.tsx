@@ -52,7 +52,7 @@ export default function Following() {
               <div className="md:pl-[23%] lg:pl-[23%] w-full">
               {followings.map((following) => {
                   return (
-                      <div className="w-full">
+                      <div className="w-full" key={following.node.login}>
                           <Follow avatar={following.node.avatarUrl} name={following.node.name} login={following.node.login} bio={following?.node.bio} company={following?.node.company} location={following?.node.location} />
                       </div>
                   )

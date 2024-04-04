@@ -61,7 +61,7 @@ export default function Repositories() {
             {
               repositories?.map((repo) => {
                 return (
-                <div>
+                <div key={repo.name}>
                   <Repository 
                     key={repo.name}
                     name={repo.name} 
