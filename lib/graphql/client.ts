@@ -11,7 +11,7 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
         ...headers,
-        authorization: `Bearer ${"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"}`,
+        authorization: `Bearer ${"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"}`,
         },
     };
 });
